@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Intro component with sign-up form</title>
+  </head>
+<body class="grid place-content-center h-screen bg-[#ff7a7a]">
+    <div
+      class="container md:flex md: gap-10 px-[15px] items-center space-y-6"
+    >
+      <div class="text-white max-md:text-center space-y-10 md:w-[50%]">
+        <h1 class="text-4xl md:text-6xl font-bold">Learn to code by watching others</h1>
+        <p class="text-lg">See how experienced developers solve problems in real-time. Watching scripted tutorials is great, but understanding how developers think is invaluable.</p>
+      </div>
+      <div class="form text-center md:w-[50%] md:px-[20px]">
+        <div class="bg-[#5f54a6] text-white px-[90px] py-[15px] rounded-[8px] shadow-lg shadow-gray-600">
+          <p><span class="font-bold">Try it free 7 days</span> then $20/mo. thereafter</p>
+        </div>
+        <form action="" class="p-[35px] bg-white mt-[20px] rounded-[8px] space-y-4">
+          <div class="input relative"><input class="w-full py-[15px] px-[20px] rounded-[5px] border border-gray-300 placeholder:font-bold outline-none" type="text" placeholder="First Name">
+            <p class="text-red-500 text-right pt-[5px] text-xs opacity-0"><i>First Name cannot be empty</i></p>
+          </div>
+          <div class="input relative"><input class="w-full py-[15px] px-[20px] rounded-[5px] border border-gray-300 placeholder:font-bold outline-none" type="text" placeholder="Last Name">
+            <p class="text-red-500 text-right pt-[5px] text-xs opacity-0"><i>Last Name cannot be empty</i></p>
+          </div>
+          <div class="input relative"><input class="email w-full py-[15px] px-[20px] rounded-[5px] border border-gray-300 placeholder:font-bold outline-none" type="email" placeholder="Email Address">
+            <p class="text-red-500 text-right pt-[5px] text-xs opacity-0"><i>Looks like this is not an email</i></p>
+          </div>
+          <div class="input relative"><input class="w-full py-[15px] px-[20px] rounded-[5px] border border-gray-300 placeholder:font-bold outline-none" type="password" placeholder="Password">
+            <p class="text-red-500 text-right pt-[5px] text-xs opacity-0"><i>Password cannot be empty</i></p>
+          </div>
+          <a class="bg-[#38cc8c] text-white font-bold px-[50px] block py-[15px] rounded-[8px] shadow-lg shadow-gray-600" href="#">CLAIM YOUR FREE TRIAL</a>
+          <p class="text-gray-400 text-xs px-[35px]">By clicking the button, you are agreeing to our <span class="text-red-500 font-bold">Terms and Services</span></p>
+        </form>
+      </div>
+    </div>
+    <script>
+      let send = document.querySelector("form a")
+      let input = document.querySelectorAll("input")
+      let container = document.querySelectorAll(".input")
+      let email = document.querySelector(".email")
+      let validEmail = /\w+@\w+\.\w+/g
+      send.onclick = function (){
+        input.forEach((ele) =>{
+        if(ele.value == ""){
+          ele.parentElement.classList.add("active")
+          ele.nextElementSibling.classList.remove("opacity-0")
+          ele.style.borderColor = "red"
+          ele.placeholder = ""
+          email.placeholder = "email@example.com"
+          email.classList.add("placeholder:text-red-500","placeholder:font-light")
+        }else{
+          ele.parentElement.classList.remove("active")
+          ele.nextElementSibling.classList.add("opacity-0")
+          ele.style.borderColor = "#cf969681"
+        }
+        })
+        if(!validEmail.test(email.value)){
+          email.parentElement.classList.add("active")
+          email.nextElementSibling.classList.remove("opacity-0")
+          email.style.borderColor = "red"
+        }else{
+          email.parentElement.classList.remove("active")
+          email.nextElementSibling.classList.add("opacity-0")
+          email.style.borderColor = "#cf969681"
+        }
+        validEmail.test(email.value)
+      }
+    </script>
+  </body>
+</html>
